@@ -8,16 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-function validateLikeUpdate (request, response, next) {
-  const { likes } = request.body;
-
-  if (likes > 0) {
-    return response.status(400).json({ error: "Updating likes is not allowed" });
-  }
-
-  return next();
-}
-
 const repositories = [];
 
 app.get("/repositories", (request, response) => {
